@@ -1,0 +1,218 @@
+# Product Requirements Document (PRD): DineFund - Restaurant Crowdfunding Platform
+
+## 1. Product Overview
+**Product Name**: DineFund
+**Tagline**: "Nourish Local Restaurants, Grow Your Community"
+**Vision**: To create a platform where food lovers can invest in their favorite local restaurants and share in their success.
+
+## 2. Core Features
+
+### 2.1 User Types
+1. **Restaurant Owners**
+   - Create and manage funding campaigns
+   - Set funding goals and investment terms
+   - Share business plans and financial projections
+   - Track campaign progress and investor relations
+
+2. **Investors**
+   - Browse and discover local restaurants
+   - View detailed campaign information
+   - Make investments with secure payment processing
+   - Track investments and returns
+
+### 2.2 Key Features
+
+#### For Restaurants:
+- **Campaign Creation**
+  - Fillable forms for business details (name, cuisine type, location, description)
+  - Funding goal setting with progress tracking
+  - Investment term configuration (interest rate, duration)
+  - Business plan and financial document uploads
+  - Image gallery for restaurant photos
+
+#### For Investors:
+- **Restaurant Discovery**
+  - Location-based search and filtering
+  - Category filters (cuisine type, funding stage, location)
+  - Campaign cards with key metrics
+  - Saved favorites and watchlists
+
+#### Shared Features:
+- **Secure Authentication System**
+  - Email/password registration and login
+  - Role-based access control (Restaurant Owner vs Investor)
+  - Profile management
+
+- **Payment Processing**
+  - Secure investment transactions
+  - Investment tracking and history
+  - Campaign funding progress
+
+## 3. Technical Requirements
+
+### 3.1 Frontend
+- **Framework**: React.js with modern hooks
+- **Styling**: Tailwind CSS for responsive design
+- **State Management**: React Context API
+- **Routing**: React Router
+- **Forms**: React Hook Form with validation
+- **HTTP Client**: Axios
+- **Responsive Design**: Mobile-first approach
+
+### 3.2 Backend
+- **Framework**: Node.js with Express.js
+- **Database**: PostgreSQL for relational data
+- **Authentication**: JWT (JSON Web Tokens)
+- **API**: RESTful API design
+- **File Storage**: Local storage (can be upgraded to AWS S3)
+- **Security**: bcrypt for password hashing, helmet for security headers
+
+### 3.3 Database Schema
+
+#### Users Table
+- id (UUID, primary key)
+- email (unique, not null)
+- password_hash (not null)
+- role (enum: 'restaurant_owner', 'investor')
+- full_name
+- created_at, updated_at
+
+#### Restaurants Table
+- id (UUID, primary key)
+- owner_id (foreign key to Users)
+- name (not null)
+- cuisine_type
+- location
+- description
+- image_url
+- created_at, updated_at
+
+#### Campaigns Table
+- id (UUID, primary key)
+- restaurant_id (foreign key to Restaurants)
+- title (not null)
+- description
+- funding_goal (decimal, not null)
+- current_funding (decimal, default 0)
+- interest_rate (decimal)
+- duration_months (integer)
+- status (enum: 'active', 'funded', 'closed')
+- start_date, end_date
+- created_at, updated_at
+
+#### Investments Table
+- id (UUID, primary key)
+- campaign_id (foreign key to Campaigns)
+- investor_id (foreign key to Users)
+- amount (decimal, not null)
+- investment_date (timestamp)
+- status (enum: 'pending', 'completed', 'refunded')
+- created_at, updated_at
+
+## 4. User Flows
+
+### 4.1 Restaurant Owner Flow
+1. Register as Restaurant Owner
+2. Login to Dashboard
+3. Create Restaurant Profile
+4. Create Funding Campaign
+5. View Campaign Analytics
+6. Manage Investments
+
+### 4.2 Investor Flow
+1. Register as Investor
+2. Browse Available Campaigns
+3. Filter by Location/Cuisine/Funding Stage
+4. View Campaign Details
+5. Make Investment
+6. Track Investment Portfolio
+
+## 5. API Endpoints
+
+### Authentication
+- POST /api/auth/register - Register new user
+- POST /api/auth/login - Login user
+- GET /api/auth/me - Get current user profile
+
+### Restaurants
+- POST /api/restaurants - Create restaurant (owner only)
+- GET /api/restaurants - Get all restaurants
+- GET /api/restaurants/:id - Get restaurant details
+- PUT /api/restaurants/:id - Update restaurant (owner only)
+
+### Campaigns
+- POST /api/campaigns - Create campaign (owner only)
+- GET /api/campaigns - Get all campaigns (with filters)
+- GET /api/campaigns/:id - Get campaign details
+- PUT /api/campaigns/:id - Update campaign (owner only)
+
+### Investments
+- POST /api/investments - Create investment (investor only)
+- GET /api/investments/my-investments - Get user's investments
+- GET /api/campaigns/:id/investments - Get campaign investments (owner only)
+
+## 6. UI/UX Requirements
+
+### Design Principles
+- Clean, modern interface
+- Food-focused imagery
+- Trust-building elements (progress bars, investor counts)
+- Mobile-responsive design
+- Accessible (WCAG 2.1 AA compliance)
+
+### Key Pages
+1. **Landing Page**: Hero section, how it works, featured campaigns
+2. **Browse Campaigns**: Grid/list view with filters
+3. **Campaign Detail**: Full campaign info, investment form
+4. **Restaurant Dashboard**: Campaign management, analytics
+5. **Investor Dashboard**: Portfolio, investment history
+6. **Authentication Pages**: Login, Register
+
+## 7. Security & Compliance
+- Password hashing with bcrypt
+- JWT token-based authentication
+- Input validation and sanitization
+- SQL injection prevention (parameterized queries)
+- XSS protection
+- CORS configuration
+- Rate limiting on API endpoints
+
+## 8. Success Metrics
+- Number of registered restaurants
+- Number of active campaigns
+- Total funding raised
+- Average investment amount
+- User retention rates
+- Campaign success rate
+
+## 9. Development Phases
+
+### Phase 1: MVP (Core Features)
+- User authentication (register/login)
+- Restaurant profile creation
+- Campaign creation and listing
+- Basic investment flow
+- Responsive UI
+
+### Phase 2: Enhanced Features
+- Advanced search and filtering
+- Investment dashboard
+- Campaign analytics
+- Email notifications
+- Payment gateway integration
+
+### Phase 3: Scale & Expansion
+- Mobile app
+- Advanced analytics
+- Social features (comments, reviews)
+- Secondary market for investments
+
+## 10. Future Enhancements
+- Real payment processing (Stripe integration)
+- Email notifications
+- Advanced analytics dashboard
+- Social sharing features
+- Mobile applications
+- AI-powered restaurant recommendations
+- Community forums
+- Restaurant success stories blog

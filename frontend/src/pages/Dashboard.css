@@ -1,0 +1,89 @@
+.dashboard-page {
+  min-height: calc(100vh - 60px);
+  padding: 40px 0;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.dashboard-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+}
+
+.restaurants-list {
+  display: grid;
+  gap: 24px;
+}
+
+.restaurant-card {
+  padding: 24px;
+}
+
+.restaurant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  gap: 16px;
+}
+
+.restaurant-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.restaurant-meta {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.restaurant-stats {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.restaurant-stats .stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-stats .stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ff6b35;
+}
+
+.restaurant-stats .stat-label {
+  font-size: 14px;
+  color: #6c757d;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .restaurant-header {
+    flex-direction: column;
+  }
+
+  .restaurant-stats {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

@@ -1,0 +1,220 @@
+.campaign-detail-page {
+  min-height: calc(100vh - 60px);
+  padding: 40px 0;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #ff6b35;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 24px;
+  padding: 8px 0;
+  transition: opacity 0.3s ease;
+}
+
+.back-button:hover {
+  opacity: 0.8;
+}
+
+.campaign-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 32px;
+}
+
+.campaign-detail-image {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.campaign-detail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.campaign-detail-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.restaurant-info h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ff6b35;
+  margin-bottom: 8px;
+}
+
+.cuisine-location {
+  font-size: 16px;
+  color: #6c757d;
+  margin-bottom: 4px;
+}
+
+.address {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 24px;
+}
+
+.campaign-description,
+.restaurant-description {
+  margin-top: 32px;
+}
+
+.campaign-description h3,
+.restaurant-description h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.campaign-description p,
+.restaurant-description p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Sidebar */
+.investment-card {
+  position: sticky;
+  top: 80px;
+}
+
+.funding-stats {
+  margin-bottom: 24px;
+}
+
+.stat-large {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.stat-large .stat-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ff6b35;
+}
+
+.stat-large .stat-label {
+  font-size: 14px;
+  color: #6c757d;
+  margin-top: 4px;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.stats-row .stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stats-row .stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+.stats-row .stat-label {
+  font-size: 12px;
+  color: #6c757d;
+  margin-top: 4px;
+}
+
+.remaining-amount {
+  text-align: center;
+  padding: 12px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-size: 16px;
+  color: #333;
+}
+
+.investment-form {
+  margin-bottom: 16px;
+}
+
+.message {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.investment-preview {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c5a 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.preview-title {
+  font-size: 14px;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.preview-amount {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.preview-note {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.campaign-closed {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .campaign-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .investment-card {
+    position: static;
+  }
+
+  .campaign-detail-title {
+    font-size: 24px;
+  }
+}
